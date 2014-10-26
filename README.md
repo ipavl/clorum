@@ -18,4 +18,4 @@ To start a web server for the application, run:
 
 ## License
 
-Copyright © 2014 Fpavl
+Copyright (c)2014 ipavl
