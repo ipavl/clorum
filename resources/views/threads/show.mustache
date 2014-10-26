@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      {{#thread}}
+      <h1>Showing Thread #{{id}}</h1>
+
+      <strong>{{title}}</strong> by <em>{{author}}</em> in <a href="#{{category}}">{{category}}</a>, at {{created}}
+      {{/thread}}
+    </div>
+  </body>
+</html>

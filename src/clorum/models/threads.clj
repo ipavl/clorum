@@ -9,11 +9,22 @@
          :pass ""
          :zeroDateTimeBehaviour "convertToNull"})
 
-;; Returns a string of the current time in milliseconds
 (def timeNow
   (str (java.sql.Timestamp.(System/currentTimeMillis))))
 
-;; Returns all threads from the database
-(defn all[]
+(defn all []
   (jdbc/query db
               (sql/select * :threads)))
+
+(defn get [id]
+  (first (jdbc/query db
+                     (sql/select * :threads (sql/where {:id id})))))
+
+(defn create [params]
+  (jdbc/insert! db :threads (merge params {:created timeNow :modified timeNow})))
+
+(defn save [id params]
+  (jdbc/update! db :threads params (sql/where {:id id})))
+
+(defn delete [id]
+  (jdbc/delete! db :threads (sql/where {:id id})))

@@ -8,7 +8,8 @@
                  [java-jdbc/dsl "0.1.0"]
                  [ring/ring-defaults "0.1.2"]
                  [mysql/mysql-connector-java "5.1.33"]
-                 [de.ubercode.clostache/clostache "1.4.0"]]
+                 [de.ubercode.clostache/clostache "1.4.0"]
+                 [ring-basic-authentication "1.0.5"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler clorum.core.handler/app}
   :profiles
