@@ -14,7 +14,7 @@
 
 (defn all []
   (jdbc/query db
-              ["SELECT category, COUNT(1) AS discussions FROM threads GROUP BY category"]))
+              ["SELECT category, COUNT(1) AS discussions FROM threads GROUP BY category ORDER BY discussions DESC"]))
 
 (defn get [category]
   (jdbc/query db
