@@ -13,7 +13,7 @@
 (defn new []
   (render-template "new" {}))
 
-(defn index[]
+(defn index []
   (render-template "index" {:threads (threads-model/all)}))
 
 (defn show [id]

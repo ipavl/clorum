@@ -7,6 +7,7 @@
             [ring.middleware.basic-authentication :refer :all]
             [clorum.models.threads :as threads-model]
             [clorum.controllers.threads :as threads-controller]
+            [clorum.controllers.categories :as categories-controller]
             [clorum.controllers.admin.threads :as admin-threads-controller]))
 
 (defn authenticated? [name pass]
@@ -14,9 +15,11 @@
        (= pass "password")))
 
 (defroutes public-routes
-  (GET "/"[] (threads-controller/index))
+  (GET "/threads" [] (threads-controller/index))
   (GET "/threads/new" [] (threads-controller/new))
   (GET "/threads/:id" [id] (threads-controller/show id))
+  (GET "/categories" [] (categories-controller/index))
+  (GET "/categories/:category" [category] (categories-controller/show category))
   (POST "/threads/create" [& params]
         (do (threads-model/create params)
           (resp/redirect "/"))) ; ideally, redirect to /threads/id
@@ -24,8 +27,7 @@
   (route/resources "/"))
 
 (defroutes protected-routes
-  (GET "/admin" [] (admin-threads-controller/index))
-  (GET "/admin" [id] (admin-threads-controller/show id))
+  (GET "/admin/threads" [] (admin-threads-controller/index))
   (GET "/admin/threads/:id/edit" [id] (admin-threads-controller/edit id))
   (GET "/admin/threads/:id/delete" [id]
         (do threads-model/delete id)

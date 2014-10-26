@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Categories Listing</h1>
+
+      <a href="/threads/new">New thread</a>
+
+      <ol>
+      {{#categories}}
+        <li><a href="/categories/{{category}}">{{category}}</a></li>
+      {{/categories}}
+      </ol>
+    </div>
+  </body>
+</html>
