@@ -1,15 +1,15 @@
+{{#thread}}
 <html>
   <head>
-    <title>Clorum</title>
+    <title>{{title}} - Clorum</title>
   </head>
 
   <body>
     <div class="container">
-      {{#thread}}
-      <h1>Showing Thread #{{id}}</h1>
+      <h1>{{title}}</h1>
 
-      <strong>{{title}}</strong> by <em>{{author}}</em> in <a href="/categories/{{category}}">{{category}}</a>, at {{created}}
-      {{/thread}}
+      Started by <em>{{author}}</em> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.
     </div>
   </body>
 </html>
+{{/thread}}
