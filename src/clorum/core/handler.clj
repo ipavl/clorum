@@ -31,10 +31,10 @@
   (GET "/admin/threads/:id/edit" [id] (admin-threads-controller/edit id))
   (GET "/admin/threads/:id/delete" [id]
         (do threads-model/delete id)
-          (resp/redirect "/admin"))
+          (resp/redirect "/admin/threads"))
   (POST "/admin/threads/:id/save" [& params]
         (do (threads-model/save (:id params) params)
-          (resp/redirect "/admin"))))
+          (resp/redirect "/admin/threads"))))
 
 (defroutes app-routes
   public-routes
