@@ -5,36 +5,36 @@
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.basic-authentication :refer :all]
-            [clorum.models.threads :as threads-model]
-            [clorum.controllers.threads :as threads-controller]
+            [clorum.models.discussions :as discussions-model]
+            [clorum.controllers.discussions :as discussions-controller]
             [clorum.controllers.categories :as categories-controller]
-            [clorum.controllers.admin.threads :as admin-threads-controller]))
+            [clorum.controllers.admin.discussions :as admin-discussions-controller]))
 
 (defn authenticated? [name pass]
   (and (= name "admin")
        (= pass "password")))
 
 (defroutes public-routes
-  (GET "/threads" [] (threads-controller/index))
-  (GET "/threads/new" [] (threads-controller/new))
-  (GET "/threads/:id" [id] (threads-controller/show id))
+  (GET "/discussions" [] (discussions-controller/index))
+  (GET "/discussions/new" [] (discussions-controller/new))
+  (GET "/discussions/:id" [id] (discussions-controller/show id))
   (GET "/categories" [] (categories-controller/index))
   (GET "/categories/:category" [category] (categories-controller/show category))
-  (POST "/threads/create" [& params]
-        (do (threads-model/create params)
-          (resp/redirect "/threads"))) ; ideally, redirect to /threads/id
-          ;(resp/redirect (clojure.string/join ["/threads/" (insertID)]))))
+  (POST "/discussions/create" [& params]
+        (do (discussions-model/create params)
+          (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
+          ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
   (route/resources "/"))
 
 (defroutes protected-routes
-  (GET "/admin/threads" [] (admin-threads-controller/index))
-  (GET "/admin/threads/:id/edit" [id] (admin-threads-controller/edit id))
-  (GET "/admin/threads/:id/delete" [id]
-        (do threads-model/delete id)
-          (resp/redirect "/admin/threads"))
-  (POST "/admin/threads/:id/save" [& params]
-        (do (threads-model/save (:id params) params)
-          (resp/redirect "/admin/threads"))))
+  (GET "/admin/discussions" [] (admin-discussions-controller/index))
+  (GET "/admin/discussions/:id/edit" [id] (admin-discussions-controller/edit id))
+  (GET "/admin/discussions/:id/delete" [id]
+        (do discussions-model/delete id)
+          (resp/redirect "/admin/discussions"))
+  (POST "/admin/discussions/:id/save" [& params]
+        (do (discussions-model/save (:id params) params)
+          (resp/redirect "/admin/discussions"))))
 
 (defroutes app-routes
   public-routes

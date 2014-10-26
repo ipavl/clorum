@@ -14,4 +14,4 @@
   (render-template "index" {:categories (categories-model/all)}))
 
 (defn show [category]
-  (render-template "show" {:threads (categories-model/get category) :category category}))
+  (render-template "show" {:discussions (categories-model/get category) :category category}))

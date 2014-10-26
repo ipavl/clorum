@@ -5,20 +5,20 @@
 
   <body>
     <div class="container">
-      <h1>Edit Thread</h1>
+      <h1>Edit Discussion</h1>
 
-      <form action="/admin/threads/{{thread.id}}/save" method="post">
+      <form action="/admin/discussions/{{discussion.id}}/save" method="post">
         <label for="title">Title</label>
-        <input name="title" value="{{thread.title}}" /><br />
+        <input name="title" value="{{discussion.title}}" /><br />
 
         <label for="author">Username</label>
-        <input name="author" value="{{thread.author}}" /><br />
+        <input name="author" value="{{discussion.author}}" /><br />
         <!--
         <label for="password">Password</label>
         <input name="password" type="password" /><br />
         -->
         <label for="category">Category</label>
-        <input name="category" value="{{thread.category}}" /><br />
+        <input name="category" value="{{discussion.category}}" /><br />
 
         <input type="submit" />
       </form>

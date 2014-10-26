@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Discussions Listing</h1>
+
+      <a href="/discussions/new">Start new discussion</a>
+
+      <ol>
+      {{#discussions}}
+        <li><a href="/discussions/{{id}}"><strong>{{title}}</strong></a> by <em>{{author}}</em> in <a href="/categories/{{category}}">{{category}}</a>, at {{created}}</li>
+      {{/discussions}}
+      </ol>
+    </div>
+  </body>
+</html>

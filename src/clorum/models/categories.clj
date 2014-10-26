@@ -14,8 +14,8 @@
 
 (defn all []
   (jdbc/query db
-              ["SELECT category, COUNT(1) AS discussions FROM threads GROUP BY category ORDER BY discussions DESC"]))
+              ["SELECT category, COUNT(1) AS discussions FROM discussions GROUP BY category ORDER BY discussions DESC"]))
 
 (defn get [category]
   (jdbc/query db
-              (sql/select * :threads (sql/where {:category category}))))
+              (sql/select * :discussions (sql/where {:category category}))))

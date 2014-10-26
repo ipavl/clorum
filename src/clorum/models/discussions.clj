@@ -1,4 +1,4 @@
-(ns clorum.models.threads
+(ns clorum.models.discussions
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
             [java-jdbc.sql :as sql]))
@@ -14,17 +14,17 @@
 
 (defn all []
   (jdbc/query db
-              (sql/select * :threads)))
+              (sql/select * :discussions)))
 
 (defn get [id]
   (first (jdbc/query db
-                     (sql/select * :threads (sql/where {:id id})))))
+                     (sql/select * :discussions (sql/where {:id id})))))
 
 (defn create [params]
-  (jdbc/insert! db :threads (merge params {:created timeNow :modified timeNow})))
+  (jdbc/insert! db :discussions (merge params {:created timeNow :modified timeNow})))
 
 (defn save [id params]
-  (jdbc/update! db :threads params (sql/where {:id id})))
+  (jdbc/update! db :discussions params (sql/where {:id id})))
 
 (defn delete [id]
-  (jdbc/delete! db :threads (sql/where {:id id})))
+  (jdbc/delete! db :discussions (sql/where {:id id})))
