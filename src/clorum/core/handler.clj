@@ -22,7 +22,7 @@
   (GET "/categories/:category" [category] (categories-controller/show category))
   (POST "/threads/create" [& params]
         (do (threads-model/create params)
-          (resp/redirect "/"))) ; ideally, redirect to /threads/id
+          (resp/redirect "/threads"))) ; ideally, redirect to /threads/id
           ;(resp/redirect (clojure.string/join ["/threads/" (insertID)]))))
   (route/resources "/"))
 
