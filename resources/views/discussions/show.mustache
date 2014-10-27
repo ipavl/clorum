@@ -8,7 +8,13 @@
     <div class="container">
       <h1>{{title}}</h1>
 
-      Started by <em>{{author}}</em> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.
+      <p class="thread info">Started by <em>{{author}}</em> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.</p>
+
+      {{#posts}}
+      <p class="post author">{{author}} <span class="post date">{{created}}</span></p>
+      <p class="post content">{{body}}</p>
+
+      {{/posts}}
     </div>
   </body>
 </html>

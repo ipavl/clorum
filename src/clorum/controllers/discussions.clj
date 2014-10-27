@@ -17,4 +17,4 @@
   (render-template "index" {:discussions (discussions-model/all)}))
 
 (defn show [id]
-  (render-template "show" {:discussion (discussions-model/get id)}))
+  (render-template "show" {:discussion (discussions-model/get id) :posts (discussions-model/get-posts id)}))

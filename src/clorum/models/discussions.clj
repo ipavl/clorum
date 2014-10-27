@@ -20,6 +20,10 @@
   (first (jdbc/query db
                      (sql/select * :discussions (sql/where {:id id})))))
 
+(defn get-posts [id]
+  (jdbc/query db
+              (sql/select * (clojure.string/join ["discussion_" id]))))
+
 (defn create [params]
   (jdbc/insert! db :discussions (merge params {:created timeNow :modified timeNow})))
 
