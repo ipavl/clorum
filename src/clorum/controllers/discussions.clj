@@ -13,6 +13,9 @@
 (defn new []
   (render-template "new" {}))
 
+(defn reply [id]
+  (render-template "reply" {:id id}))
+
 (defn index []
   (render-template "index" {:discussions (discussions-model/all)}))
 

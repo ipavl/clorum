@@ -18,10 +18,15 @@
   (GET "/discussions" [] (discussions-controller/index))
   (GET "/discussions/new" [] (discussions-controller/new))
   (GET "/discussions/:id" [id] (discussions-controller/show id))
+  (GET "/discussions/:id/reply" [id] (discussions-controller/reply id))
   (GET "/categories" [] (categories-controller/index))
   (GET "/categories/:category" [category] (categories-controller/show category))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
+          (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
+          ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
+  (POST "/discussions/:id/reply/create" [& id params]
+        (do (discussions-model/create-reply id params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
   (route/resources "/"))

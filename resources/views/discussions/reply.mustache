@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Post Reply</h1>
+
+      <form action="/discussions/{{id}}/reply/create" method="post">
+        <input name="id" type="hidden" value="{{id}}" />
+
+        <label for="author">Username</label><br />
+        <input name="author" /><br />
+        <!--
+        <label for="password">Password</label><br />
+        <input name="password" type="password" /><br />
+        -->
+        <label for="body">Content</label><br />
+        <textarea name="body" columns="100" cols="50" rows="8"></textarea><br />
+        <br />
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>
