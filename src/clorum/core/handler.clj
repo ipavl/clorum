@@ -15,7 +15,7 @@
        (= pass "password")))
 
 (defroutes public-routes
-	(GET "/" [] (resp/redirect "/categories"))
+  (GET "/" [] (resp/redirect "/categories"))
   (GET "/discussions" [] (discussions-controller/index))
   (GET "/discussions/new" [] (discussions-controller/new))
   (GET "/discussions/:id" [id] (discussions-controller/show id))
