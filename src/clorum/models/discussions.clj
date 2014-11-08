@@ -20,15 +20,15 @@
   (first (jdbc/query db
                      (sql/select * :discussions (sql/where {:id id})))))
 
-(defn get-posts [id]
+(defn get-replies [parent]
   (jdbc/query db
-              (sql/select * (clojure.string/join ["discussion_" id]))))
+              (sql/select * :replies (sql/where {:parent parent}))))
 
 (defn create [params]
   (jdbc/insert! db :discussions (merge params {:created timeNow :modified timeNow})))
 
-(defn create-reply [id params]
-  (jdbc/insert! db (clojure.string/join ["discussion_" id]) (merge params {})))
+(defn create-reply [params]
+  (jdbc/insert! db :replies (merge params {:created timeNow :modified timeNow})))
 
 (defn save [id params]
   (jdbc/update! db :discussions params (sql/where {:id id})))
