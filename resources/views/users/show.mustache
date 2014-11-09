@@ -1,0 +1,25 @@
+{{#user}}
+<html>
+  <head>
+    <title>Viewing profile: {{username}} - Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>{{username}}</h1>
+
+      <a href="/">Home</a>
+
+      <p class="profile registered">Member since: {{registered}}</p>
+
+      {{#discussions}}
+
+      {{/discussions}}
+
+      {{#posts}}
+
+      {{/posts}}
+    </div>
+  </body>
+</html>
+{{/user}}

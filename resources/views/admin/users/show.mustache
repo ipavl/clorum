@@ -1,0 +1,21 @@
+{{#user}}
+<html>
+  <head>
+    <title>Viewing profile: {{username}} - Clorum Admin</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>{{username}}</h1>
+
+      <a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a>
+
+      <ul>
+        <li>{{email}}</li>
+        <li>Member since: {{registered}}</li>
+        <li>Registration IP: {{ipaddress}}</li>
+      </ul>
+    </div>
+  </body>
+</html>
+{{/user}}

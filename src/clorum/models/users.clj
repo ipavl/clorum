@@ -3,15 +3,15 @@
   (:require [clojure.java.jdbc :as jdbc]
             [java-jdbc.sql :as sql]
             [clorum.core.config :as config]
-            [clorum.core.util as :as util]))
+            [clorum.core.util :as util]))
 
 (defn all []
   (jdbc/query config/db
               (sql/select * :users)))
 
-(defn get [username]
+(defn get [id]
   (first (jdbc/query config/db
-                     (sql/select * :users (sql/where {:username username})))))
+                     (sql/select * :users (sql/where {:id id})))))
 
 (defn create [params]
   (jdbc/insert! config/db :users (merge params {:registered util/timeNow})))

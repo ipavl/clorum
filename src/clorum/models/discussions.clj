@@ -3,7 +3,7 @@
   (:require [clojure.java.jdbc :as jdbc]
             [java-jdbc.sql :as sql]
             [clorum.core.config :as config]
-            [clorum.core.util as :as util]))
+            [clorum.core.util :as util]))
 
 (defn all []
   (jdbc/query config/db

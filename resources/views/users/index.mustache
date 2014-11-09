@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Users Listing</h1>
+
+      <a href="/">Home</a> | <a href="/users/register">Register</a> | <a href="/discussions/new">Start new discussion</a>
+
+      <ol>
+      {{#users}}
+        <li><a href="/users/{{id}}">{{username}}</a></li>
+      {{/users}}
+      </ol>
+    </div>
+  </body>
+</html>

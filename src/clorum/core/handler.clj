@@ -9,8 +9,9 @@
             [clorum.models.users :as users-model]
             [clorum.controllers.discussions :as discussions-controller]
             [clorum.controllers.categories :as categories-controller]
+            [clorum.controllers.users :as users-controller]
             [clorum.controllers.admin.discussions :as admin-discussions-controller]
-            [clorum.controllers.users :as users-controller]))
+            [clorum.controllers.admin.users :as admin-users-controller]))
 
 (defn authenticated? [name pass]
   (and (= name "admin")
@@ -24,6 +25,8 @@
   (GET "/discussions/:id/reply" [id] (discussions-controller/reply id))
   (GET "/categories" [] (categories-controller/index))
   (GET "/categories/:category" [category] (categories-controller/show category))
+  (GET "/users" [] (users-controller/index))
+  (GET "/users/:id" [id] (users-controller/show id))
   (GET "/users/register" [] (users-controller/register))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
@@ -39,11 +42,20 @@
   (route/resources "/"))
 
 (defroutes protected-routes
+  (GET "/admin/users" [] (admin-users-controller/index))
+  (GET "/admin/users/:id" [id] (admin-users-controller/show id))
+  (GET "/admin/users/:id/edit" [id] (admin-users-controller/edit id))
   (GET "/admin/discussions" [] (admin-discussions-controller/index))
   (GET "/admin/discussions/:id/edit" [id] (admin-discussions-controller/edit id))
   (GET "/admin/discussions/:id/delete" [id]
         (do discussions-model/delete id)
           (resp/redirect "/admin/discussions"))
+  (GET "/admin/users/:id/delete" [id]
+        (do users-model/delete id)
+          (resp/redirect "/admin/users"))
+  (POST "/admin/users/:id/save" [& params]
+        (do (users-model/save (:id params) params)
+          (resp/redirect "/admin/users")))
   (POST "/admin/discussions/:id/save" [& params]
         (do (discussions-model/save (:id params) params)
           (resp/redirect "/admin/discussions"))))
