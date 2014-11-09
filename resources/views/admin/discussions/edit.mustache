@@ -7,6 +7,8 @@
     <div class="container">
       <h1>Edit Discussion</h1>
 
+      <a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a>
+
       <form action="/admin/discussions/{{discussion.id}}/save" method="post">
         <label for="title">Title</label>
         <input name="title" value="{{discussion.title}}" /><br />
