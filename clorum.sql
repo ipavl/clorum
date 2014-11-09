@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 09, 2014 at 04:37 PM
+-- Generation Time: Nov 09, 2014 at 07:29 PM
 -- Server version: 10.0.14-MariaDB-log
 -- PHP Version: 5.6.2
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `clorum`
 --
+CREATE DATABASE IF NOT EXISTS `clorum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `clorum`;
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(32) NOT NULL,
   `registered` datetime NOT NULL,
   `ipaddress` varchar(45) NOT NULL DEFAULT '0.0.0.0',
-  `permissions` int(11) NOT NULL DEFAULT '0'
+  `permissions` int(11) NOT NULL DEFAULT '0',
+  `bio` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

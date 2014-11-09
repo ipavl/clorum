@@ -8,13 +8,18 @@
     <div class="container">
       <h1>{{username}}</h1>
 
-      <a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a>
+      <p class="admin nav"><a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a></p>
 
       <ul>
         <li>{{email}}</li>
         <li>Member since: {{registered}}</li>
         <li>Registration IP: {{ipaddress}}</li>
       </ul>
+
+      <h3>Bio</h3>
+      <p class="profile bio">{{bio}}</p>
+
+      <p class="admin quicklinks">[ <a href="/admin/users/{{id}}/edit">Edit {{username}}</a> | <a href="/admin/users/{{id}}/delete">Delete {{username}}</a> ]</p>
     </div>
   </body>
 </html>

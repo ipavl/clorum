@@ -16,6 +16,9 @@
         <label for="email">Email</label>
         <input name="email" value="{{user.email}}" /><br />
 
+        <label for="bio">Bio (max: 255 characters)</label><br />
+        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255">{{user.bio}}</textarea><br />
+
         <input type="submit" />
       </form>
     </div>
