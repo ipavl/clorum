@@ -6,9 +6,11 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.basic-authentication :refer :all]
             [clorum.models.discussions :as discussions-model]
+            [clorum.models.users :as users-model]
             [clorum.controllers.discussions :as discussions-controller]
             [clorum.controllers.categories :as categories-controller]
-            [clorum.controllers.admin.discussions :as admin-discussions-controller]))
+            [clorum.controllers.admin.discussions :as admin-discussions-controller]
+            [clorum.controllers.users :as users-controller]))
 
 (defn authenticated? [name pass]
   (and (= name "admin")
@@ -22,6 +24,7 @@
   (GET "/discussions/:id/reply" [id] (discussions-controller/reply id))
   (GET "/categories" [] (categories-controller/index))
   (GET "/categories/:category" [category] (categories-controller/show category))
+  (GET "/users/register" [] (users-controller/register))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
@@ -30,6 +33,9 @@
         (do (discussions-model/create-reply params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
+  (POST "/users/register/create" [& params]
+        (do (users-model/create params)
+          (resp/redirect "/")))
   (route/resources "/"))
 
 (defroutes protected-routes
