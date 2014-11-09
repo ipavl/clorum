@@ -26,8 +26,8 @@
   (GET "/categories" [] (categories-controller/index))
   (GET "/categories/:category" [category] (categories-controller/show category))
   (GET "/users" [] (users-controller/index))
-  (GET "/users/:id" [id] (users-controller/show id))
   (GET "/users/register" [] (users-controller/register))
+  (GET "/users/:id" [id] (users-controller/show id))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
