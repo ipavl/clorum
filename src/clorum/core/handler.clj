@@ -26,7 +26,7 @@
         (do (discussions-model/create params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
-  (POST "/discussions/:id/reply/create" [& params]
+  (POST "/discussions/:parent/reply/create" [& params]
         (do (discussions-model/create-reply params)
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
