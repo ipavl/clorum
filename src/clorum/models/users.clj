@@ -2,10 +2,8 @@
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
             [java-jdbc.sql :as sql]
-            [clorum.core.config :as config]))
-
-(def timeNow
-  (str (java.sql.Timestamp.(System/currentTimeMillis))))
+            [clorum.core.config :as config]
+            [clorum.core.util as :as util]))
 
 (defn all []
   (jdbc/query config/db
@@ -16,7 +14,7 @@
                      (sql/select * :users (sql/where {:username username})))))
 
 (defn create [params]
-  (jdbc/insert! config/db :users (merge params {:registered timeNow})))
+  (jdbc/insert! config/db :users (merge params {:registered util/timeNow})))
 
 (defn save [id params]
   (jdbc/update! config/db :users params (sql/where {:id id})))
