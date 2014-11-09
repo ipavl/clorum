@@ -34,4 +34,5 @@
   (jdbc/update! db :discussions params (sql/where {:id id})))
 
 (defn delete [id]
-  (jdbc/delete! db :discussions (sql/where {:id id})))
+  (jdbc/delete! db :discussions (sql/where {:id id}))
+  (jdbc/delete! db :replies (sql/where {:parent id})))
