@@ -1,13 +1,11 @@
 (ns clorum.models.discussions
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
-            [java-jdbc.sql :as sql]))
+            [java-jdbc.sql :as sql]
+            [clorum.core.config :as config]))
 
-(def db {:subprotocol "mysql"
-         :subname "//localhost:3306/clorum"
-         :user "root"
-         :pass ""
-         :zeroDateTimeBehaviour "convertToNull"})
+(def db
+  config/db)
 
 (def timeNow
   (str (java.sql.Timestamp.(System/currentTimeMillis))))
