@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 09, 2014 at 10:43 PM
+-- Generation Time: Nov 16, 2014 at 10:46 PM
 -- Server version: 10.0.14-MariaDB-log
 -- PHP Version: 5.6.2
 
@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS `discussions` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `category` varchar(20) NOT NULL,
-  `content` text
+  `content` text,
+  `verified` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -50,7 +51,8 @@ CREATE TABLE IF NOT EXISTS `replies` (
   `author` varchar(30) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `verified` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

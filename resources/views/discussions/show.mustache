@@ -10,12 +10,12 @@
 
       <a href="/">Home</a>
 
-      <p class="thread info">Started by <em>{{author}}</em> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.</p>
+      <p class="thread info">Started by <em>{{author}}</em> <span class="post verified">(verified: {{verified}})</span> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.</p>
 
       <p class="thread content">{{content}}</p>
 
       {{#replies}}
-      <p class="post author">{{author}} <span class="post date">{{created}}</span></p>
+      <p class="post author">{{author}} <span class="post verified">(verified: {{verified}})</span> <span class="post date">{{created}}</span></p>
       <p class="post content">{{content}}</p>
 
       {{/replies}}

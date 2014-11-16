@@ -13,6 +13,10 @@
   (first (jdbc/query config/db
                      (sql/select * :users (sql/where {:id id})))))
 
+(defn get-by-name [username]
+  (first (jdbc/query config/db
+                     (sql/select * :users (sql/where {:username (first username)})))))
+
 (defn create [params]
   (jdbc/insert! config/db :users (merge params {:registered util/timeNow
                                                 :password (util/encrypt (:password params))})))
