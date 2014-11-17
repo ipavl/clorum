@@ -18,8 +18,9 @@
                      (sql/select * :users (sql/where {:username (first username)})))))
 
 (defn create [params]
-  (jdbc/insert! config/db :users (merge params {:registered util/timeNow
-                                                :password (util/encrypt (:password params))})))
+  (if (nil? (get-by-name [(:username params)]))
+    (jdbc/insert! config/db :users (merge params {:registered util/timeNow
+                                                :password (util/encrypt (:password params))}))))
 
 (defn save [id params]
   (jdbc/update! config/db :users params (sql/where {:id id})))
