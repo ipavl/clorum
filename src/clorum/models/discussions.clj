@@ -20,14 +20,16 @@
 
 (defn create [params]
   (def db-user (users-model/get-by-name [(:author params)]))
-  (def verified? (util/encrypt-verify (:password params) (:password db-user)))
+  (if db-user
+    (def verified? (util/encrypt-verify (:password params) (:password db-user))))
 
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
                                               {:created util/timeNow :modified util/timeNow :verified verified?})))
 
 (defn create-reply [params]
   (def db-user (users-model/get-by-name [(:author params)]))
-  (def verified? (util/encrypt-verify (:password params) (:password db-user)))
+  (if db-user
+    (def verified? (util/encrypt-verify (:password params) (:password db-user)))
 
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
                                               {:created util/timeNow :modified util/timeNow :verified verified?})))
