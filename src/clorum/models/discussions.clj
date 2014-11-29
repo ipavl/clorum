@@ -1,6 +1,7 @@
 (ns clorum.models.discussions
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
+            [clojure.string :as string]
             [java-jdbc.sql :as sql]
             [clorum.core.config :as config]
             [clorum.core.util :as util]
@@ -23,16 +24,38 @@
   (if db-user
     (def verified? (util/encrypt-verify (:password params) (:password db-user))))
 
+  (def author
+    (if (string/blank? (:author params))
+      "Guest"
+      (:author params)))
+
+  (def category
+    (if (string/blank? (:category params))
+      "uncategorized"
+      (:category params)))
+
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
-                                              {:created util/timeNow :modified util/timeNow :verified verified?})))
+                                              {:author author
+                                               :category category
+                                               :created util/timeNow
+                                               :modified util/timeNow
+                                               :verified verified?})))
 
 (defn create-reply [params]
   (def db-user (users-model/get-by-name [(:author params)]))
   (if db-user
-    (def verified? (util/encrypt-verify (:password params) (:password db-user)))
+    (def verified? (util/encrypt-verify (:password params) (:password db-user))))
+
+  (def author
+    (if (string/blank? (:author params))
+      "Guest"
+      (:author params)))
 
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
-                                              {:created util/timeNow :modified util/timeNow :verified verified?}))))
+                                              {:author author
+                                               :created util/timeNow
+                                               :modified util/timeNow
+                                               :verified verified?})))
 
 (defn save [id params]
   (jdbc/update! config/db :discussions params (sql/where {:id id})))
