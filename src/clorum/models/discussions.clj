@@ -32,7 +32,7 @@
     (def verified? (util/encrypt-verify (:password params) (:password db-user)))
 
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
-                                              {:created util/timeNow :modified util/timeNow :verified verified?})))
+                                              {:created util/timeNow :modified util/timeNow :verified verified?}))))
 
 (defn save [id params]
   (jdbc/update! config/db :discussions params (sql/where {:id id})))
