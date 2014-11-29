@@ -1,10 +1,10 @@
 (ns clorum.models.discussions
   (:refer-clojure :exclude [get])
   (:require [clojure.java.jdbc :as jdbc]
-            [clojure.string :as string]
             [java-jdbc.sql :as sql]
             [clorum.core.config :as config]
             [clorum.core.util :as util]
+            [clorum.core.sanitization :as sanitize]
             [clorum.models.users :as users-model]))
 
 (defn all []
@@ -24,19 +24,9 @@
   (if db-user
     (def verified? (util/encrypt-verify (:password params) (:password db-user))))
 
-  (def author
-    (if (string/blank? (:author params))
-      "Guest"
-      (:author params)))
-
-  (def category
-    (if (string/blank? (:category params))
-      "uncategorized"
-      (:category params)))
-
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
-                                              {:author author
-                                               :category category
+                                              {:author (sanitize/author (:author params))
+                                               :category (sanitize/category (:category params))
                                                :created util/timeNow
                                                :modified util/timeNow
                                                :verified verified?})))
@@ -46,13 +36,8 @@
   (if db-user
     (def verified? (util/encrypt-verify (:password params) (:password db-user))))
 
-  (def author
-    (if (string/blank? (:author params))
-      "Guest"
-      (:author params)))
-
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
-                                              {:author author
+                                              {:author (sanitize/author (:author params))
                                                :created util/timeNow
                                                :modified util/timeNow
                                                :verified verified?})))
