@@ -11,8 +11,11 @@
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
                  [lib-noir "0.9.4"]]
-  :plugins [[lein-ring "0.8.13"]]
+  :plugins [[lein-ring "0.8.13"]
+            [codox "0.8.10"]]
   :ring {:handler clorum.core.handler/app}
+  :codox {:src-dir-uri "https://github.com/ipavl/clorum/blob/master/"
+          :src-linenum-anchor-prefix "L"}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]]}})

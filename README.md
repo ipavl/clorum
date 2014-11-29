@@ -18,6 +18,15 @@ To start a web server for the application, run:
 
 The database structure can be found in `clorum.sql`, which can be easily imported into a database.
 
+## Documentation
+
+Project documentation is generated with [Codox][] and can be found
+[on GitHub Pages](https://ipavl.github.io/clorum/doc/), or generated locally by running:
+
+    lein doc
+
+[codox]: https://github.com/weavejester/codox
+
 ## License
 
 Copyright (c)2014 ipavl

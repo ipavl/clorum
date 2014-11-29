@@ -5,10 +5,12 @@
   "Returns the current timestamp."
   (str (java.sql.Timestamp.(System/currentTimeMillis))))
 
-(defn encrypt [string]
+(defn encrypt
   "Encrypts the passed string."
+  [string]
   (str (password/encrypt string)))
 
-(defn encrypt-verify [raw encrypted]
+(defn encrypt-verify
   "Verifies an encrypted string."
+  [raw encrypted]
   (password/compare raw encrypted))
