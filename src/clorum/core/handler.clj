@@ -17,6 +17,16 @@
   (and (= name "admin")
        (= pass "password")))
 
+(defn- wrap-guard
+  "A guard to protect only /admin routes, otherwise something like the 404 page will be
+  erroneously protected if its route is below protected-routes."
+  [app]
+  (let [guard (wrap-basic-authentication app authenticated?)]
+    (fn [req]
+      (if (re-matches #".*/admin/.*" (:uri req))
+        (guard req)
+        (app req)))))
+
 (defroutes public-routes
   (GET "/" [] (resp/redirect "/categories"))
   (GET "/discussions" [] (discussions-controller/index))
@@ -62,8 +72,8 @@
 
 (defroutes app-routes
   public-routes
-  (route/not-found "Not Found")
-  (wrap-basic-authentication protected-routes authenticated?))
+  (wrap-guard protected-routes)
+  (route/not-found "Not Found"))
 
 (def app
   (handler/site app-routes))
