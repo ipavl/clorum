@@ -62,8 +62,8 @@
 
 (defroutes app-routes
   public-routes
-  (wrap-basic-authentication protected-routes authenticated?)
-  (route/not-found "Not Found"))
+  (route/not-found "Not Found")
+  (wrap-basic-authentication protected-routes authenticated?))
 
 (def app
   (handler/site app-routes))
