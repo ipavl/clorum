@@ -8,6 +8,10 @@
     (let [response (app (mock/request :get "/"))]
       (is (= (:status response) 302))))
 
+  (testing "protected route"
+    (let [response (app (mock/request :get "/admin/users"))]
+      (is (= (:status response) 401))))
+
   (testing "not-found route"
     (let [response (app (mock/request :get "/invalid"))]
       (is (= (:status response) 404)))))
