@@ -1,5 +1,5 @@
 # clorum
-[![Build Status](https://travis-ci.org/ipavl/clorum.svg)](https://travis-ci.org/ipavl/clorum)
+[![Build Status](https://travis-ci.org/ipavl/clorum.svg?branch=master)](https://travis-ci.org/ipavl/clorum)
 
 Basic forum software written in Clojure.
 
