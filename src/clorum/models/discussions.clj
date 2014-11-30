@@ -30,7 +30,8 @@
   [params]
   (def db-user (users-model/get-by-name [(:author params)]))
   (if db-user
-    (def verified? (util/encrypt-verify (:password params) (:password db-user))))
+    (def verified? (util/encrypt-verify (:password params) (:password db-user)))
+    (def verified? false))
 
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
                                               {:author (sanitize/author (:author params))
@@ -44,7 +45,8 @@
   [params]
   (def db-user (users-model/get-by-name [(:author params)]))
   (if db-user
-    (def verified? (util/encrypt-verify (:password params) (:password db-user))))
+    (def verified? (util/encrypt-verify (:password params) (:password db-user)))
+    (def verified? false))
 
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
                                               {:author (sanitize/author (:author params))
