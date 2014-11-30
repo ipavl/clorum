@@ -23,7 +23,7 @@
 (defn create [params]
   "Inserts a new user with the passed parameters."
   (if (nil? (get-by-name [(:username params)]))
-    (jdbc/insert! config/db :users (merge params {:registered util/timeNow
+    (jdbc/insert! config/db :users (merge params {:registered util/current-time-sql
                                                 :password (util/encrypt (:password params))}))))
 
 (defn save [id params]

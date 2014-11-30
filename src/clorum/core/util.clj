@@ -1,9 +1,12 @@
 (ns clorum.core.util
-  (:require [noir.util.crypt :as password]))
+  (:require [noir.util.crypt :as password]
+            [clj-time.core :as time]
+            [clj-time.coerce :as timec]))
 
-(def timeNow
-  "Returns the current timestamp."
-  (str (java.sql.Timestamp.(System/currentTimeMillis))))
+(defn current-time-sql
+  "Returns the current SQL timestamp."
+  []
+  (str (timec/to-sql-time (time/now))))
 
 (defn encrypt
   "Encrypts the passed string."

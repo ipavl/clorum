@@ -36,8 +36,8 @@
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
                                               {:author (sanitize/author (:author params))
                                                :category (sanitize/category (:category params))
-                                               :created util/timeNow
-                                               :modified util/timeNow
+                                               :created (util/current-time-sql)
+                                               :modified (util/current-time-sql)
                                                :verified verified?})))
 
 (defn create-reply
@@ -50,8 +50,8 @@
 
   (jdbc/insert! config/db :replies (merge (apply dissoc params [:password])
                                               {:author (sanitize/author (:author params))
-                                               :created util/timeNow
-                                               :modified util/timeNow
+                                               :created (util/current-time-sql)
+                                               :modified (util/current-time-sql)
                                                :verified verified?})))
 
 (defn save
