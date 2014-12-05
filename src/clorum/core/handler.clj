@@ -47,8 +47,11 @@
           (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
   (POST "/users/register/create" [& params]
-        (do (users-model/create params)
-          (resp/redirect "/")))
+        (do (if (users-model/create params)
+              {:status 200
+                :body "Registration successful."}
+              {:status 200
+                :body "Registration unsuccessful. The username you requested may already be taken."})))
   (route/resources "/"))
 
 (defroutes protected-routes
