@@ -1,5 +1,6 @@
 (ns clorum.core.handler
-  (:require [compojure.core :refer :all]
+  (:require [clojure.string :as string]
+            [compojure.core :refer :all]
             [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.util.response :as resp]
@@ -44,8 +45,7 @@
           ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
   (POST "/discussions/:parent/reply/create" [& params]
         (do (discussions-model/create-reply params)
-          (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
-          ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
+          (resp/redirect (string/join ["/discussions/" (:parent params)]))))
   (POST "/users/register/create" [& params]
         (do (if (users-model/create params)
               {:status 200
