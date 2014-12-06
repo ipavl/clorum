@@ -20,4 +20,6 @@
   (render-template "edit" {:user (users-model/get id)}))
 
 (defn show [id]
-  (render-template "show" {:user (users-model/get id)}))
+  (render-template "show" {:user (users-model/get id)
+                           :replies (users-model/get-replies (:username (users-model/get id)))
+                           :discussions (users-model/get-discussions (:username (users-model/get id)))}))

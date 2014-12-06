@@ -17,13 +17,13 @@
 
       <h3>Discussions</h3>
       {{#discussions}}
-
+      <li><div class="profile item">{{created}}: <a href="/discussions/{{id}}">{{title}}</a></div></li>
       {{/discussions}}
 
       <h3>Replies</h3>
-      {{#posts}}
-
-      {{/posts}}
+      {{#replies}}
+      <li><div class="profile item">{{created}}: <a href="/discussions/{{parent}}">{{content}}</a></div></li>
+      {{/replies}}
     </div>
   </body>
 </html>

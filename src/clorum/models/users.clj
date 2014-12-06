@@ -24,6 +24,18 @@
   (first (jdbc/query config/db
                      (sql/select * :users (sql/where {:username (first username)})))))
 
+(defn get-replies
+  "Returns all replies started by the user (ignores non-verified entries)."
+  [author]
+  (jdbc/query config/db
+              (sql/select * :replies (sql/where {:author author :verified 1}))))
+
+(defn get-discussions
+  "Returns all discussions started by the user (ignores non-verified entries)."
+  [author]
+  (jdbc/query config/db
+              (sql/select * :discussions (sql/where {:author author :verified 1}))))
+
 (defn create
   "Inserts a new user with the passed parameters."
   [params]
