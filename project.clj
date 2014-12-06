@@ -4,7 +4,7 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/java.jdbc "0.3.6"]
-                 [compojure "1.2.2"]
+                 [compojure "1.3.0"]
                  [java-jdbc/dsl "0.1.1"]
                  [ring/ring-defaults "0.1.2"]
                  [mysql/mysql-connector-java "5.1.34"]
