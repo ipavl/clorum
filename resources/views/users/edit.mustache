@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Edit User "{{user.username}}"</h1>
+
+      <a href="/">Home</a>
+
+      <p style="color: red;">Must fill in all required fields; if there is no change for a field, enter its current value.</p>
+
+      <form action="/users/{{user.id}}/save" method="post">
+        <label for="email">Email (required; enter current if not changing, otherwise enter new one here)</label><br />
+        <input name="email" /><br />
+
+        <label for="bio">Bio (max: 255 characters), optional</label><br />
+        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255">{{user.bio}}</textarea><br />
+
+        <label for="password">Password (required; enter current if not changing, otherwise enter new one here)</label><br />
+        <input name="password" type="password" /><br />
+
+        <label for="currentpass">Current password (required)</label><br />
+        <input name="currentpass" type="password" /><br />
+
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -3,7 +3,8 @@
   (:require [clojure.java.jdbc :as jdbc]
             [java-jdbc.sql :as sql]
             [clorum.core.config :as config]
-            [clorum.core.util :as util]))
+            [clorum.core.util :as util]
+            [clorum.core.sanitization :as sanitize]))
 
 (defn all
   "Returns all rows in the users table."
@@ -31,7 +32,21 @@
                                                 :password (util/encrypt (:password params))}))))
 
 (defn save
-  "Updates the user with the specified id with the passed parameters."
+  "Updates the user with the specified id with the passed parameters if the given password is correct."
+  [id params]
+  (if (util/encrypt-verify (:currentpass params) (:password (get id)))
+    (jdbc/update! config/db :users (merge (apply dissoc params [:currentpass
+                                                                :permissions
+                                                                :registered
+                                                                :ipaddress
+                                                                :username
+                                                                :id])
+                                                 {:email (sanitize/blank-string (:email params))
+                                                  :bio (sanitize/blank-string (:bio params))
+                                                  :password (util/encrypt (:password params))}) (sql/where {:id id}))))
+
+(defn save-admin
+  "Updates the user with the specified id with the passed parameters without verifying the user."
   [id params]
   (jdbc/update! config/db :users params (sql/where {:id id})))
 

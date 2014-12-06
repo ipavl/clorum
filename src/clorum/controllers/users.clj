@@ -16,5 +16,8 @@
 (defn register []
   (render-template "register" []))
 
+(defn edit [id]
+  (render-template "edit" {:user (users-model/get id)}))
+
 (defn show [id]
   (render-template "show" {:user (users-model/get id)}))

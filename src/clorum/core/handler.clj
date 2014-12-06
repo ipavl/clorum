@@ -39,6 +39,7 @@
   (GET "/users" [] (users-controller/index))
   (GET "/users/register" [] (users-controller/register))
   (GET "/users/:id" [id] (users-controller/show id))
+  (GET "/users/:id/edit" [id] (users-controller/edit id))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
           (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create params))]))))
@@ -51,6 +52,12 @@
                 :body "Registration successful."}
               {:status 200
                 :body "Registration unsuccessful. The username you requested may already be taken."})))
+  (POST "/users/:id/save" [& params]
+        (do (if (users-model/save (:id params) params)
+              {:status 200
+                :body "Update successful."}
+              {:status 200
+                :body "Update unsuccessful. The current password you submitted was probably incorrect."})))
   (route/resources "/"))
 
 (defroutes protected-routes
@@ -66,7 +73,7 @@
         (do users-model/delete id)
           (resp/redirect "/admin/users"))
   (POST "/admin/users/:id/save" [& params]
-        (do (users-model/save (:id params) params)
+        (do (users-model/save-admin (:id params) params)
           (resp/redirect "/admin/users")))
   (POST "/admin/discussions/:id/save" [& params]
         (do (discussions-model/save (:id params) params)

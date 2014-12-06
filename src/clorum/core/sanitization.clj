@@ -14,3 +14,10 @@
   (if (string/blank? cat)
     "uncategorized"
     cat))
+
+(defn blank-string
+  "Converts the passed string to nil if it is blank, otherwise returns the passed string unchanged."
+  [check]
+  (if (string/blank? check)
+    nil
+    check))
