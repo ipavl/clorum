@@ -25,7 +25,7 @@
                      (sql/select * :users (sql/where {:username (first username)})))))
 
 (defn get-replies
-  "Returns all replies started by the user (ignores non-verified entries)."
+  "Returns all replies made by the user (ignores non-verified entries)."
   [author]
   (jdbc/query config/db
               (sql/select * :replies (sql/where {:author author :verified 1}))))
