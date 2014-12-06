@@ -41,8 +41,7 @@
   (GET "/users/:id" [id] (users-controller/show id))
   (POST "/discussions/create" [& params]
         (do (discussions-model/create params)
-          (resp/redirect "/discussions"))) ; ideally, redirect to /discussions/id
-          ;(resp/redirect (clojure.string/join ["/discussions/" (insertID)]))))
+          (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create params))]))))
   (POST "/discussions/:parent/reply/create" [& params]
         (do (discussions-model/create-reply params)
           (resp/redirect (string/join ["/discussions/" (:parent params)]))))

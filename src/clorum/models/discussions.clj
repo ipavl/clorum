@@ -32,13 +32,19 @@
   (if db-user
     (def verified? (util/encrypt-verify (:password params) (:password db-user)))
     (def verified? false))
+  (def insert-time util/current-time-sql)
 
   (jdbc/insert! config/db :discussions (merge (apply dissoc params [:password])
                                               {:author (sanitize/author (:author params))
                                                :category (sanitize/category (:category params))
-                                               :created (util/current-time-sql)
-                                               :modified (util/current-time-sql)
-                                               :verified verified?})))
+                                               :created (insert-time)
+                                               :modified (insert-time)
+                                               :verified verified?}))
+  ;; Rough way of getting the inserted thread's ID. Should probably also check time.
+  (last (jdbc/query config/db
+                     (sql/select :id :discussions (sql/where {:author (sanitize/author (:author params))
+                                                              :category (sanitize/category (:category params))
+                                                              :verified verified?})))))
 
 (defn create-reply
   "Inserts a new reply with the passed parameters, sanitizing blank author fields."
