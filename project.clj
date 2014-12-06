@@ -18,5 +18,5 @@
   :codox {:src-dir-uri "https://github.com/ipavl/clorum/blob/master/"
           :src-linenum-anchor-prefix "L"}
   :profiles
-  {:dev {:dependencies [[javax.servlet/servlet-api "3.0.1"]
+  {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]]}})
