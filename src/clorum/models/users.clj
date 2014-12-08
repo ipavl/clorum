@@ -54,7 +54,6 @@
                                                                 :username
                                                                 :id])
                                                  {:email (sanitize/blank-string (:email params))
-                                                  :bio (sanitize/blank-string (:bio params))
                                                   :password (util/encrypt (:password params))}) (sql/where {:id id}))))
 
 (defn save-admin
