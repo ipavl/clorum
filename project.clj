@@ -11,7 +11,7 @@
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
                  [clj-time "0.8.0"]
-                 [lib-noir "0.9.4"]]
+                 [lib-noir "0.9.5"]]
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]]
   :ring {:handler clorum.core.handler/app}
