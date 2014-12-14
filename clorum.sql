@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.3.0
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2014 at 10:46 PM
--- Server version: 10.0.14-MariaDB-log
--- PHP Version: 5.6.2
+-- Generation Time: Dec 14, 2014 at 05:18 PM
+-- Server version: 10.0.15-MariaDB-log
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `email` varchar(254) NOT NULL,
-  `password` varchar(64) NOT NULL,
+  `password` varchar(254) NOT NULL,
   `registered` datetime NOT NULL,
   `ipaddress` varchar(45) NOT NULL DEFAULT '0.0.0.0',
   `permissions` int(11) NOT NULL DEFAULT '0',
