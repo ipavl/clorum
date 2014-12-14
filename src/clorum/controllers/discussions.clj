@@ -19,5 +19,8 @@
 (defn index []
   (render-template "index" {:discussions (discussions-model/all)}))
 
+(defn recent []
+  (render-template "recent" {:discussions (discussions-model/get-recent)}))
+
 (defn show [id]
   (render-template "show" {:discussion (discussions-model/get id) :replies (discussions-model/get-replies id)}))

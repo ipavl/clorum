@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Recent Activity - Clorum</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Recent Activity</h1>
+
+      <a href="/">Home</a>
+
+      <h2>Newest Discussions</h2>
+
+      <ol>
+      {{#discussions}}
+        <li><a href="/discussions/{{id}}"><strong>{{title}}</strong></a> by <em>{{author}}</em>, at {{created}}</li>
+      {{/discussions}}
+      </ol>
+    </div>
+  </body>
+</html>

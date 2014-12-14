@@ -25,6 +25,12 @@
   (jdbc/query config/db
               (sql/select * :replies (sql/where {:parent parent}))))
 
+(defn get-recent
+  "Returns the newest 15 discussions."
+  []
+  (jdbc/query config/db
+              ["SELECT * FROM discussions ORDER BY id DESC LIMIT 15"]))
+
 (defn create
   "Inserts a new discussion with the passed parameters, sanitizing blank author and category fields."
   [params]

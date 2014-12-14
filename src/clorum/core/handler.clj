@@ -30,6 +30,7 @@
 
 (defroutes public-routes
   (GET "/" [] (resp/redirect "/categories"))
+  (GET "/recent" [] (discussions-controller/recent))
   (GET "/discussions" [] (discussions-controller/index))
   (GET "/discussions/new" [] (discussions-controller/new))
   (GET "/discussions/:id" [id] (discussions-controller/show id))
