@@ -7,7 +7,7 @@
                  [clorum-core "0.1.0-SNAPSHOT"]
                  [compojure "1.3.1"]
                  [java-jdbc/dsl "0.1.1"]
-                 [ring/ring-defaults "0.1.2"]
+                 [ring/ring-defaults "0.1.3"]
                  [mysql/mysql-connector-java "5.1.34"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
