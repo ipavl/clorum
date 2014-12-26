@@ -1,7 +1,8 @@
 (ns clorum.controllers.admin.users
   (:require
    [clostache.parser :as clostache]
-   [clorum.models.users :as users-model]))
+   [clorum.core.config :as config]
+   [clorum-core.users :as users-model]))
 
 (defn read-template [template-name]
   (slurp (clojure.java.io/resource
@@ -11,10 +12,10 @@
   (clostache/render (read-template template-file) params))
 
 (defn index []
-  (render-template "index" {:users (users-model/all)}))
+  (render-template "index" {:users (users-model/all config/db)}))
 
 (defn edit [id]
-  (render-template "edit" {:user (users-model/get id)}))
+  (render-template "edit" {:user (users-model/get config/db id)}))
 
 (defn show [id]
-  (render-template "show" {:user (users-model/get id)}))
+  (render-template "show" {:user (users-model/get config/db id)}))

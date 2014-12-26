@@ -6,8 +6,9 @@
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.basic-authentication :refer :all]
-            [clorum.models.discussions :as discussions-model]
-            [clorum.models.users :as users-model]
+            [clorum.core.config :as config]
+            [clorum-core.discussions :as discussions-model]
+            [clorum-core.users :as users-model]
             [clorum.controllers.discussions :as discussions-controller]
             [clorum.controllers.categories :as categories-controller]
             [clorum.controllers.users :as users-controller]
@@ -42,19 +43,19 @@
   (GET "/users/:id" [id] (users-controller/show id))
   (GET "/users/:id/edit" [id] (users-controller/edit id))
   (POST "/discussions/create" [& params]
-        (do (discussions-model/create params)
-          (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create params))]))))
+        (do (discussions-model/create config/db params)
+          (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create config/db params))]))))
   (POST "/discussions/:parent/reply/create" [& params]
-        (do (discussions-model/create-reply params)
+        (do (discussions-model/create-reply config/db params)
           (resp/redirect (string/join ["/discussions/" (:parent params)]))))
   (POST "/users/register/create" [& params]
-        (do (if (users-model/create params)
+        (do (if (users-model/create config/db params)
               {:status 200
                 :body "Registration successful."}
               {:status 200
                 :body "Registration unsuccessful. The username you requested may already be taken."})))
   (POST "/users/:id/save" [& params]
-        (do (if (users-model/save (:id params) params)
+        (do (if (users-model/save config/db (:id params) params)
               {:status 200
                 :body "Update successful."}
               {:status 200
@@ -68,16 +69,16 @@
   (GET "/admin/discussions" [] (admin-discussions-controller/index))
   (GET "/admin/discussions/:id/edit" [id] (admin-discussions-controller/edit id))
   (GET "/admin/discussions/:id/delete" [id]
-        (do discussions-model/delete id)
+        (do discussions-model/delete config/db id)
           (resp/redirect "/admin/discussions"))
   (GET "/admin/users/:id/delete" [id]
-        (do users-model/delete id)
+        (do users-model/delete config/db id)
           (resp/redirect "/admin/users"))
   (POST "/admin/users/:id/save" [& params]
-        (do (users-model/save-admin (:id params) params)
+        (do (users-model/save-admin config/db (:id params) params)
           (resp/redirect "/admin/users")))
   (POST "/admin/discussions/:id/save" [& params]
-        (do (discussions-model/save (:id params) params)
+        (do (discussions-model/save config/db (:id params) params)
           (resp/redirect "/admin/discussions"))))
 
 (defroutes app-routes
