@@ -1,6 +1,6 @@
 # clorum
 [![Build Status](https://travis-ci.org/ipavl/clorum.svg?branch=master)](https://travis-ci.org/ipavl/clorum)
-[![Dependency Status](https://www.versioneye.com/user/projects/547a9c29b22f9096bb0000e6//badge.svg)](https://www.versioneye.com/user/projects/547a9c29b22f9096bb0000e6/)
+[![Dependency Status](https://www.versioneye.com/user/projects/547a9c29b22f9096bb0000e6//badge.svg?style=flat)](https://www.versioneye.com/user/projects/547a9c29b22f9096bb0000e6/)
 
 Basic forum software written in Clojure. Reference implementation project for [clorum-core](https://github.com/ipavl/clorum-core).
 
