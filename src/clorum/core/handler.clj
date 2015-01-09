@@ -43,8 +43,7 @@
   (GET "/users/:id" [id] (users-controller/show id))
   (GET "/users/:id/edit" [id] (users-controller/edit id))
   (POST "/discussions/create" [& params]
-        (do (discussions-model/create config/db params)
-          (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create config/db params))]))))
+          (resp/redirect (clojure.string/join ["/discussions/" (:id (discussions-model/create config/db params))])))
   (POST "/discussions/:parent/reply/create" [& params]
         (do (discussions-model/create-reply config/db params)
           (resp/redirect (string/join ["/discussions/" (:parent params)]))))
