@@ -16,6 +16,8 @@
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]]
   :ring {:handler clorum.core.handler/app}
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
   :codox {:src-dir-uri "https://github.com/ipavl/clorum/blob/master/"
           :src-linenum-anchor-prefix "L"}
   :profiles
