@@ -21,7 +21,7 @@
   (render-template "index" {:discussions (discussions-model/all config/db)}))
 
 (defn recent []
-  (render-template "recent" {:discussions (discussions-model/get-recent config/db)}))
+  (render-template "recent" {:discussions (discussions-model/get-recent config/db 10)}))
 
 (defn show [id]
   (render-template "show" {:discussion (discussions-model/get config/db id)
