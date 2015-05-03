@@ -5,7 +5,7 @@
    [clorum-core.categories :as categories-model]))
 
 (defn index []
-  (util/render-page "categories/index" {:title "Home"
+  (util/render-page "categories/index" {:title "Categories"
                                         :categories (categories-model/all config/db)}))
 
 (defn show [category]
