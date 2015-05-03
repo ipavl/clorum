@@ -5,16 +5,18 @@
    [clorum-core.discussions :as discussions-model]))
 
 (defn new []
-  (util/render-page "discussions/new" {}))
+  (util/render-page "discussions/new" {:title "New discussion"}))
 
 (defn reply [id]
-  (util/render-page "discussions/reply" {:id id}))
+  (util/render-page "discussions/reply" {:title "Reply to discussion" :id id}))
 
 (defn index []
-  (util/render-page "discussions/index" {:discussions (discussions-model/all config/db)}))
+  (util/render-page "discussions/index" {:title "All discussions"
+                                         :discussions (discussions-model/all config/db)}))
 
 (defn recent []
-  (util/render-page "discussions/recent" {:discussions (discussions-model/get-recent config/db 10)}))
+  (util/render-page "discussions/recent" {:title "Recent discussions"
+                                          :discussions (discussions-model/get-recent config/db 10)}))
 
 (defn show [id]
   (util/render-page "discussions/show" {:discussion (discussions-model/get config/db id)

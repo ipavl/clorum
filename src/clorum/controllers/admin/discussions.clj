@@ -5,7 +5,9 @@
    [clorum-core.discussions :as discussions-model]))
 
 (defn index []
-  (util/render-page "admin/discussions/index" {:discussions (discussions-model/all config/db)}))
+  (util/render-page "admin/discussions/index" {:title "All discussions"
+                                               :discussions (discussions-model/all config/db)}))
 
 (defn edit [id]
-  (util/render-page "admin/discussions/edit" {:discussion (discussions-model/get config/db id)}))
+  (util/render-page "admin/discussions/edit" {:title "Edit discussion"
+                                              :discussion (discussions-model/get config/db id)}))

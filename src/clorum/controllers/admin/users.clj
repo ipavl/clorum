@@ -5,10 +5,15 @@
    [clorum-core.users :as users-model]))
 
 (defn index []
-  (util/render-page "admin/users/index" {:users (users-model/all config/db)}))
+  (util/render-page "admin/users/index" {:title "All users"
+                                         :users (users-model/all config/db)}))
 
 (defn edit [id]
-  (util/render-page "admin/users/edit" {:user (users-model/get config/db id)}))
+  (def user (users-model/get config/db id))
+  (util/render-page "admin/users/edit" {:title (str "Edit user: " (:username user))
+                                        :user user}))
 
 (defn show [id]
-  (util/render-page "admin/users/show" {:user (users-model/get config/db id)}))
+  (def user (users-model/get config/db id))
+  (util/render-page "admin/users/show" {:title (:username user)
+                                        :user user}))
