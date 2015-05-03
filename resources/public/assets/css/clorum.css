@@ -22,7 +22,6 @@ footer {
 .post-author {
   margin-top: 5px;
   text-align: center;
-  font-weight: bold;
 }
 
 .post-verified {
@@ -40,8 +39,16 @@ footer {
   font-size: 80%;
 }
 
+.is-guest {
+  font-style: italic;
+}
+.is-guest::after {
+  font-style: normal;
+  content: " (guest)";
+}
+
 .is-verified {
-  background-color: #BFD7FC;
+  font-weight: bold;
 }
 
 .no-margin {

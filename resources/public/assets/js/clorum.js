@@ -4,10 +4,10 @@ $('.post').each(function() {
 
   // Prettify post verification indicators
   if (verifiedLabel.text() === "(verified: 1)") {
-    $(this).addClass("is-verified");
-
-    verifiedLabel.html("Verified");
+    $(this).find("p.post-author").addClass("is-verified");
   } else {
-    verifiedLabel.html("");
+    $(this).find("p.post-author").addClass("is-guest");
   }
+
+  verifiedLabel.hide();
 });
