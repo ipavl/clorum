@@ -5,3 +5,5 @@
          :user "root"
          :pass ""
          :zeroDateTimeBehaviour "convertToNull"})
+
+(def recent-discussions-count 10)
