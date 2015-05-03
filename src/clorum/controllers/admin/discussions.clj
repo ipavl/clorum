@@ -1,18 +1,11 @@
 (ns clorum.controllers.admin.discussions
   (:require
-   [clostache.parser :as clostache]
    [clorum.core.config :as config]
+   [clorum.core.utilities :as util]
    [clorum-core.discussions :as discussions-model]))
 
-(defn read-template [template-name]
-  (slurp (clojure.java.io/resource
-          (str "views/admin/discussions/" template-name ".mustache"))))
-
-(defn render-template [template-file params]
-  (clostache/render (read-template template-file) params))
-
 (defn index []
-  (render-template "index" {:discussions (discussions-model/all config/db)}))
+  (util/render-page "admin/discussions/index" {:discussions (discussions-model/all config/db)}))
 
 (defn edit [id]
-  (render-template "edit" {:discussion (discussions-model/get config/db id)}))
+  (util/render-page "admin/discussions/edit" {:discussion (discussions-model/get config/db id)}))

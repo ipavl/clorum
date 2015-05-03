@@ -1,19 +1,12 @@
 (ns clorum.controllers.categories
   (:require
-   [clostache.parser :as clostache]
    [clorum.core.config :as config]
+   [clorum.core.utilities :as util]
    [clorum-core.categories :as categories-model]))
 
-(defn read-template [template-name]
-  (slurp (clojure.java.io/resource
-          (str "views/categories/" template-name ".mustache"))))
-
-(defn render-template [template-file params]
-  (clostache/render (read-template template-file) params))
-
 (defn index []
-  (render-template "index" {:categories (categories-model/all config/db)}))
+  (util/render-page "categories/index" {:categories (categories-model/all config/db)}))
 
 (defn show [category]
-  (render-template "show" {:discussions (categories-model/get config/db category)
-                           :category category}))
+  (util/render-page "categories/show" {:discussions (categories-model/get config/db category)
+                            :category category}))

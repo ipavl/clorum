@@ -1,10 +1,6 @@
 {{#user}}
-<html>
-  <head>
-    <title>Viewing profile: {{username}} - Clorum Admin</title>
-  </head>
+{{> header}}
 
-  <body>
     <div class="container">
       <h1>{{username}}</h1>
 
@@ -21,6 +17,6 @@
 
       <p class="admin quicklinks">[ <a href="/admin/users/{{id}}/edit">Edit {{username}}</a> | <a href="/admin/users/{{id}}/delete">Delete {{username}}</a> ]</p>
     </div>
-  </body>
-</html>
+
+{{> footer}}
 {{/user}}

@@ -1,10 +1,6 @@
 {{#user}}
-<html>
-  <head>
-    <title>Viewing profile: {{username}} - Clorum</title>
-  </head>
+{{> header}}
 
-  <body>
     <div class="container">
       <h1>{{username}}</h1>
 
@@ -25,6 +21,6 @@
       <li><div class="profile item">{{created}}: <a href="/discussions/{{parent}}">{{content}}</a></div></li>
       {{/replies}}
     </div>
-  </body>
-</html>
+
+{{> footer}}
 {{/user}}
