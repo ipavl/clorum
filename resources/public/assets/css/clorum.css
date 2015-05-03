@@ -25,10 +25,6 @@ footer {
   font-weight: bold;
 }
 
-.is-verified {
-  background-color: #BFD7FC;
-}
-
 .post-verified {
   text-align: center;
   font-style: italic;
@@ -37,6 +33,15 @@ footer {
 .post-reply {
   margin-top: 15px;
   text-align: center;
+}
+
+.post-date {
+  text-align: center;
+  font-size: 80%;
+}
+
+.is-verified {
+  background-color: #BFD7FC;
 }
 
 .no-margin {
