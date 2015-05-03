@@ -1,7 +1,6 @@
 {{#user}}
 {{> header}}
 
-    <div class="container">
       <h1>{{username}}</h1>
 
       <p class="admin nav"><a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a></p>
@@ -16,7 +15,6 @@
       <p class="profile bio">{{bio}}</p>
 
       <p class="admin quicklinks">[ <a href="/admin/users/{{id}}/edit">Edit {{username}}</a> | <a href="/admin/users/{{id}}/delete">Delete {{username}}</a> ]</p>
-    </div>
 
 {{> footer}}
 {{/user}}

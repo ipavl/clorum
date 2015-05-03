@@ -1,7 +1,6 @@
 {{#user}}
 {{> header}}
 
-    <div class="container">
       <h1>{{username}}</h1>
 
       <a href="/">Home</a> | <a href="/users/{{id}}/edit">Edit</a>
@@ -20,7 +19,6 @@
       {{#replies}}
       <li><div class="profile item">{{created}}: <a href="/discussions/{{parent}}">{{content}}</a></div></li>
       {{/replies}}
-    </div>
 
 {{> footer}}
 {{/user}}
