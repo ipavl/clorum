@@ -25,6 +25,10 @@ footer {
   font-weight: bold;
 }
 
+.is-verified {
+  background-color: #BFD7FC;
+}
+
 .post-verified {
   text-align: center;
   font-style: italic;
