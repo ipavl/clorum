@@ -1,21 +1,32 @@
 {{#discussion}}
 {{> header}}
 
-      <h1>{{title}}</h1>
+      <h2>{{title}}</h2>
 
-      <a href="/">Home</a>
-
-      <p class="thread info">Started by <em>{{author}}</em> <span class="post verified">(verified: {{verified}})</span> at {{created}}. Posted in <a href="/categories/{{category}}">{{category}}</a>.</p>
+      <p class="thread-info">
+        Started by <em>{{author}}</em> <span class="post-verified">(verified: {{verified}})</span>
+        at <span class="post-date">{{created}}</span>. Posted in <a href="/categories/{{category}}">{{category}}</a>.
+      </p>
 
       <p class="thread content">{{content}}</p>
 
-      {{#replies}}
-      <p class="post author">{{author}} <span class="post verified">(verified: {{verified}})</span> <span class="post date">{{created}}</span></p>
-      <p class="post content">{{content}}</p>
+      <h3>Replies</h3>
 
+      {{#replies}}
+      <div class="post row no-margin">
+        <div class="post-meta col-md-2">
+          <p class="post-author">{{author}}</p>
+          <p class="post-verified">(verified: {{verified}})</p>
+          <p class="post-date">{{created}}</p>
+        </div>
+
+        <div class="post-content col-md-10">
+          {{content}}
+        </div>
+      </div>
       {{/replies}}
 
-      <p class="post reply">[ <a href="{{id}}/reply">Reply to thread</a> ]</p>
+      <p class="post-reply">[ <a href="{{id}}/reply">Reply to thread</a> ]</p>
 
 {{> footer}}
 {{/discussion}}

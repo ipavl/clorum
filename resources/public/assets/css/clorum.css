@@ -10,3 +10,31 @@ footer {
   text-align: center;
   font-size: 70%;
 }
+
+.post {
+  border: black 1px solid;
+}
+
+.post-meta {
+  background-color: #8dd;
+}
+
+.post-author {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.post-verified {
+  text-align: center;
+  font-style: italic;
+}
+
+.post-reply {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.no-margin {
+  margin: 0;
+}
