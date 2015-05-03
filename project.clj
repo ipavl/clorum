@@ -8,11 +8,11 @@
                  [compojure "1.3.3"]
                  [java-jdbc/dsl "0.1.2"]
                  [ring/ring-defaults "0.1.4"]
-                 [mysql/mysql-connector-java "5.1.34"]
+                 [mysql/mysql-connector-java "5.1.35"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
                  [clj-time "0.9.0"]
-                 [lib-noir "0.9.5"]]
+                 [lib-noir "0.9.9"]]
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]]
   :ring {:handler clorum.core.handler/app}
