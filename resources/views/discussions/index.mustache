@@ -1,13 +1,37 @@
 {{> header}}
 
-      <h1>Discussions Listing</h1>
+      <h2>Discussions Listing</h2>
 
-      <a href="/">Home</a> | <a href="/users/register">Register</a> | <a href="/users">User list</a> | <a href="/recent">Recent</a> | <a href="/discussions/new">Start new discussion</a>
+      <div class="row no-margin">
+        <div class="col-md-3">
+          Discussion name
+        </div>
+        <div class="col-md-3">
+          Category
+        </div>
+        <div class="col-md-3">
+          Started by
+        </div>
+        <div class="col-md-3">
+          Creation date
+        </div>
+      </div>
 
-      <ol>
       {{#discussions}}
-        <li><a href="/discussions/{{id}}"><strong>{{title}}</strong></a> by <em>{{author}}</em> in <a href="/categories/{{category}}">{{category}}</a>, at {{created}}</li>
+      <div class="row no-margin">
+        <div class="col-md-3">
+          <a href="/discussions/{{id}}">{{title}}</a>
+        </div>
+        <div class="col-md-3">
+          <a href="/categories/{{category}}">{{category}}</a>
+        </div>
+        <div class="col-md-3">
+          {{author}}
+        </div>
+        <div class="col-md-3">
+          {{created}}
+        </div>
+      </div>
       {{/discussions}}
-      </ol>
 
 {{> footer}}
