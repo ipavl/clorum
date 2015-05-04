@@ -1,13 +1,31 @@
 {{> header}}
 
-      <h1>All discussions in {{category}}</h1>
+      <h2>All discussions in {{category}}</h2>
 
-      <a href="/">Home</a>
+      <div class="row no-margin">
+        <div class="col-md-5">
+          Discussion name
+        </div>
+        <div class="col-md-4">
+          Started by
+        </div>
+        <div class="col-md-3">
+          Creation date
+        </div>
+      </div>
 
-      <ol>
       {{#discussions}}
-        <li><a href="/discussions/{{id}}"><strong>{{title}}</strong></a> by <em>{{author}}</em>, at {{created}}</li>
+      <div class="row no-margin">
+        <div class="col-md-5">
+          <a href="/discussions/{{id}}">{{title}}</a>
+        </div>
+        <div class="col-md-4">
+          {{author}}
+        </div>
+        <div class="col-md-3">
+          {{created}}
+        </div>
+      </div>
       {{/discussions}}
-      </ol>
 
 {{> footer}}
