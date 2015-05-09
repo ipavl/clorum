@@ -2,22 +2,20 @@
 
       <h1>User Registration</h1>
 
-      <a href="/">Home</a>
-
-      <form action="/users/register/create" method="post">
+      <form action="/users/register/create" method="post" class="form-group">
         <label for="username">Username</label>
-        <input name="username" /><br />
+        <input name="username" class="form-control" /><br />
 
         <label for="password">Password</label>
-        <input name="password" type="password" /><br />
+        <input name="password" type="password" class="form-control" /><br />
 
         <label for="email">Email</label>
-        <input name="email" /><br />
+        <input name="email" class="form-control" /><br />
 
         <label for="bio">Bio (max: 255 characters)</label><br />
-        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255"></textarea><br />
+        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255" class="form-control"></textarea><br />
 
-        <input type="submit" />
+        <input type="submit" value="Register" class="form-control" />
       </form>
 
 {{> footer}}

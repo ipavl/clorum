@@ -2,25 +2,23 @@
 
       <h1>Edit Discussion</h1>
 
-      <a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a>
-
-      <form action="/admin/discussions/{{discussion.id}}/save" method="post">
+      <form action="/admin/discussions/{{discussion.id}}/save" method="post" class="form-group">
         <label for="title">Title</label>
-        <input name="title" value="{{discussion.title}}" /><br />
+        <input name="title" value="{{discussion.title}}" class="form-control" /><br />
 
         <label for="author">Username</label>
-        <input name="author" value="{{discussion.author}}" /><br />
+        <input name="author" value="{{discussion.author}}" class="form-control" /><br />
         <!--
         <label for="password">Password</label>
-        <input name="password" type="password" /><br />
+        <input name="password" type="password" class="form-control" /><br />
         -->
         <label for="category">Category</label>
-        <input name="category" value="{{discussion.category}}" /><br />
+        <input name="category" value="{{discussion.category}}" class="form-control" /><br />
 
         <label for="content">Content</label><br />
-        <textarea name="content" columns="100" cols="50" rows="8"></textarea><br />
+        <textarea name="content" columns="100" cols="50" rows="8" class="form-control"></textarea><br />
 
-        <input type="submit" />
+        <input type="submit" value="Save changes" class="form-control"/>
       </form>
 
 {{> footer}}

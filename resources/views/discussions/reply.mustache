@@ -2,21 +2,19 @@
 
       <h1>Post Reply</h1>
 
-      <a href="/">Home</a>
-
-      <form action="/discussions/{{id}}/reply/create" method="post">
+      <form action="/discussions/{{id}}/reply/create" method="post" class="form-group">
         <input name="parent" type="hidden" value="{{id}}" />
 
         <label for="author">Username</label><br />
-        <input name="author" /><br />
+        <input name="author" class="form-control" /><br />
 
         <label for="password">Password</label><br />
-        <input name="password" type="password" /><br />
+        <input name="password" type="password" class="form-control" /><br />
 
         <label for="content">Content</label><br />
-        <textarea name="content" columns="100" cols="50" rows="8"></textarea><br />
+        <textarea name="content" columns="100" cols="50" rows="8" class="form-control"></textarea><br />
         <br />
-        <input type="submit" />
+        <input type="submit" value="Submit reply" class="form-control" />
       </form>
 
 {{> footer}}

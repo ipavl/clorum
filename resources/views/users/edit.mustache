@@ -2,24 +2,22 @@
 
       <h1>Edit User "{{user.username}}"</h1>
 
-      <a href="/">Home</a>
+      <p class="alert alert-warning">Must fill in all required fields; if there is no change for a field, enter its current value.</p>
 
-      <p style="color: red;">Must fill in all required fields; if there is no change for a field, enter its current value.</p>
-
-      <form action="/users/{{user.id}}/save" method="post">
+      <form action="/users/{{user.id}}/save" method="post" class="form-group">
         <label for="email">Email (required; enter current if not changing, otherwise enter new one here)</label><br />
-        <input name="email" /><br />
+        <input name="email" class="form-control" /><br />
 
         <label for="bio">Bio (max: 255 characters), optional</label><br />
-        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255">{{user.bio}}</textarea><br />
+        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255" class="form-control">{{user.bio}}</textarea><br />
 
         <label for="password">Password (required; enter current if not changing, otherwise enter new one here)</label><br />
-        <input name="password" type="password" /><br />
+        <input name="password" type="password" class="form-control" /><br />
 
         <label for="currentpass">Current password (required)</label><br />
-        <input name="currentpass" type="password" /><br />
+        <input name="currentpass" type="password" class="form-control" /><br />
 
-        <input type="submit" />
+        <input type="submit" value="Save changes" class="form-control" />
       </form>
 
 {{> footer}}

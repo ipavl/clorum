@@ -2,19 +2,17 @@
 
       <h1>Edit User</h1>
 
-      <a href="/admin/discussions">Admin Home</a> | <a href="/">Board Home</a>
-
-      <form action="/admin/users/{{user.id}}/save" method="post">
+      <form action="/admin/users/{{user.id}}/save" method="post" class="form-group">
         <label for="username">Username</label>
-        <input name="username" value="{{user.username}}" /><br />
+        <input name="username" value="{{user.username}}" class="form-control" /><br />
 
         <label for="email">Email</label>
-        <input name="email" value="{{user.email}}" /><br />
+        <input name="email" value="{{user.email}}" class="form-control" /><br />
 
         <label for="bio">Bio (max: 255 characters)</label><br />
-        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255">{{user.bio}}</textarea><br />
+        <textarea name="bio" columns="100" cols="50" rows="4" maxlength="255" class="form-control">{{user.bio}}</textarea><br />
 
-        <input type="submit" />
+        <input type="submit" value="Save changes" class="form-control" />
       </form>
 
 {{> footer}}
