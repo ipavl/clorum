@@ -1,118 +1,206 @@
--- phpMyAdmin SQL Dump
--- version 4.3.0
--- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 14, 2014 at 05:18 PM
--- Server version: 10.0.15-MariaDB-log
--- PHP Version: 5.6.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `clorum`
---
-CREATE DATABASE IF NOT EXISTS `clorum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `clorum`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `discussions`
+-- PostgreSQL database dump
 --
 
-CREATE TABLE IF NOT EXISTS `discussions` (
-`id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `author` varchar(30) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `category` varchar(20) NOT NULL,
-  `content` text,
-  `verified` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
 
 --
--- Table structure for table `replies`
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
-CREATE TABLE IF NOT EXISTS `replies` (
-`id` int(11) NOT NULL,
-  `parent` int(11) NOT NULL,
-  `author` varchar(30) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `content` text NOT NULL,
-  `verified` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
--- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `password` varchar(254) NOT NULL,
-  `registered` datetime NOT NULL,
-  `ipaddress` varchar(45) NOT NULL DEFAULT '0.0.0.0',
-  `permissions` int(11) NOT NULL DEFAULT '0',
-  `bio` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
 
 --
--- Indexes for dumped tables
+-- Name: discussions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
---
--- Indexes for table `discussions`
---
-ALTER TABLE `discussions`
- ADD PRIMARY KEY (`id`);
+CREATE TABLE discussions (
+    id integer NOT NULL,
+    title text NOT NULL,
+    author text NOT NULL,
+    created timestamp with time zone NOT NULL,
+    modified timestamp with time zone NOT NULL,
+    category text NOT NULL,
+    content text,
+    verified integer NOT NULL
+);
+
+
+ALTER TABLE discussions OWNER TO postgres;
 
 --
--- Indexes for table `replies`
---
-ALTER TABLE `replies`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Name: discussions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
+CREATE SEQUENCE discussions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE discussions_id_seq OWNER TO postgres;
+
 --
--- AUTO_INCREMENT for table `discussions`
+-- Name: discussions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
-ALTER TABLE `discussions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER SEQUENCE discussions_id_seq OWNED BY discussions.id;
+
+
 --
--- AUTO_INCREMENT for table `replies`
+-- Name: replies; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
-ALTER TABLE `replies`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE replies (
+    id integer NOT NULL,
+    parent integer NOT NULL,
+    author text NOT NULL,
+    created timestamp with time zone NOT NULL,
+    modified timestamp with time zone NOT NULL,
+    content text NOT NULL,
+    verified integer NOT NULL
+);
+
+
+ALTER TABLE replies OWNER TO postgres;
+
 --
--- AUTO_INCREMENT for table `users`
+-- Name: replies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
-ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE SEQUENCE replies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE replies_id_seq OWNER TO postgres;
+
+--
+-- Name: replies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE replies_id_seq OWNED BY replies.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    username text NOT NULL,
+    email text NOT NULL,
+    password text NOT NULL,
+    registered timestamp with time zone NOT NULL,
+    ipaddress text NOT NULL,
+    permissions integer NOT NULL,
+    bio text
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY discussions ALTER COLUMN id SET DEFAULT nextval('discussions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY replies ALTER COLUMN id SET DEFAULT nextval('replies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: discussions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY discussions
+    ADD CONSTRAINT discussions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: replies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY replies
+    ADD CONSTRAINT replies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
