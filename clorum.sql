@@ -37,11 +37,11 @@ CREATE TABLE discussions (
     id integer NOT NULL,
     title text NOT NULL,
     author text NOT NULL,
-    created timestamp with time zone NOT NULL,
-    modified timestamp with time zone NOT NULL,
+    created timestamp without time zone DEFAULT now() NOT NULL,
+    modified timestamp without time zone DEFAULT now() NOT NULL,
     category text NOT NULL,
     content text,
-    verified integer NOT NULL
+    verified boolean DEFAULT false NOT NULL
 );
 
 
@@ -76,10 +76,10 @@ CREATE TABLE replies (
     id integer NOT NULL,
     parent integer NOT NULL,
     author text NOT NULL,
-    created timestamp with time zone NOT NULL,
-    modified timestamp with time zone NOT NULL,
+    created timestamp without time zone DEFAULT now() NOT NULL,
+    modified timestamp without time zone DEFAULT now() NOT NULL,
     content text NOT NULL,
-    verified integer NOT NULL
+    verified boolean DEFAULT false NOT NULL
 );
 
 
@@ -115,9 +115,9 @@ CREATE TABLE users (
     username text NOT NULL,
     email text NOT NULL,
     password text NOT NULL,
-    registered timestamp with time zone NOT NULL,
-    ipaddress text NOT NULL,
-    permissions integer NOT NULL,
+    registered timestamp without time zone DEFAULT now() NOT NULL,
+    ipaddress text DEFAULT '0.0.0.0'::text NOT NULL,
+    permissions integer DEFAULT 0 NOT NULL,
     bio text
 );
 
