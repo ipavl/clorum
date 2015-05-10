@@ -6,6 +6,10 @@ Basic forum software written in Clojure. Reference implementation project for [c
 
 Work-in-progress.
 
+## Demo
+
+A demo instance of Clorum is available on [Heroku](https://clorum.herokuapp.com/).
+
 ## Prerequisites
 
 You will need [Leiningen][] 2.0.0 or above installed, as well as PostgreSQL.
