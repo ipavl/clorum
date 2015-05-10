@@ -8,7 +8,7 @@
                  [compojure "1.3.4"]
                  [java-jdbc/dsl "0.1.2"]
                  [ring/ring-defaults "0.1.5"]
-                 [mysql/mysql-connector-java "5.1.35"]
+                 [org.postgresql/postgresql "9.4-1201-jdbc41"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
                  [clj-time "0.9.0"]
