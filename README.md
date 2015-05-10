@@ -8,7 +8,7 @@ Work-in-progress.
 
 ## Prerequisites
 
-You will need [Leiningen][] 2.0.0 or above installed, as well as MySQL, MariaDB, or equivalent.
+You will need [Leiningen][] 2.0.0 or above installed, as well as PostgreSQL.
 
 [leiningen]: https://github.com/technomancy/leiningen
 
