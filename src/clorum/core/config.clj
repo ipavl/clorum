@@ -3,7 +3,7 @@
 (def db {:subprotocol "mysql"
          :subname "//localhost:3306/clorum"
          :user "root"
-         :pass ""
+         :password ""
          :zeroDateTimeBehaviour "convertToNull"})
 
 (def recent-discussions-count 10)
