@@ -3,7 +3,7 @@
 (def db {:subprotocol "postgresql"
          :subname "//localhost:5432/clorum"
          :user "postgres"
-         :pass ""
+         :password ""
          :zeroDateTimeBehaviour "convertToNull"
          :classname "org.postgresql.Driver"})
 
