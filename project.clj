@@ -5,7 +5,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/java.jdbc "0.6.1"]
                  [compojure "1.5.1"]
-                 [java-jdbc/dsl "0.1.2"]
+                 [java-jdbc/dsl "0.1.3"]
                  [ring/ring-defaults "0.2.1"]
                  [org.postgresql/postgresql "9.4.1208"]
                  ;[mysql/mysql-connector-java "5.1.35"] ;; uncomment and update config.clj if using MySQL
