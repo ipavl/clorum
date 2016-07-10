@@ -2,13 +2,13 @@
   (:require
    [clorum.core.config :as config]
    [clorum.core.utilities :as util]
-   [clorum-core.categories :as categories-model]))
+   [clorum.models.categories :as categories-model]))
 
 (defn index []
   (util/render-page "categories/index" {:title "Categories"
-                                        :categories (categories-model/all config/db)}))
+                                        :categories (categories-model/all)}))
 
 (defn show [category]
   (util/render-page "categories/show" {:title category
-                                       :discussions (categories-model/get config/db category)
+                                       :discussions (categories-model/get category)
                                        :category category}))

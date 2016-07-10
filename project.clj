@@ -2,16 +2,16 @@
   :description "Basic forum software written in Clojure"
   :url "https://github.com/ipavl/clorum"
   :min-lein-version "2.0.0"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/java.jdbc "0.3.6"]
-                 [clorum-core "0.1.0-SNAPSHOT"]
-                 [compojure "1.3.4"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/java.jdbc "0.6.1"]
+                 [compojure "1.5.1"]
                  [java-jdbc/dsl "0.1.2"]
-                 [ring/ring-defaults "0.1.5"]
-                 [org.postgresql/postgresql "9.4-1201-jdbc41"]
+                 [ring/ring-defaults "0.2.1"]
+                 [org.postgresql/postgresql "9.4.1208"]
+                 ;[mysql/mysql-connector-java "5.1.35"] ;; uncomment and update config.clj if using MySQL
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
-                 [clj-time "0.9.0"]
+                 [clj-time "0.12.0"]
                  [lib-noir "0.9.9"]]
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]]
