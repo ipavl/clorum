@@ -7,8 +7,9 @@
                  [compojure "1.5.1"]
                  [java-jdbc/dsl "0.1.3"]
                  [ring/ring-defaults "0.2.1"]
+                 [yogthos/config "0.8"]
                  [org.postgresql/postgresql "9.4.1208"]
-                 ;[mysql/mysql-connector-java "5.1.35"] ;; uncomment and update config.clj if using MySQL
+                 [mysql/mysql-connector-java "5.1.35"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [ring-basic-authentication "1.0.5"]
                  [clj-time "0.12.0"]
@@ -20,5 +21,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :codox {:src-dir-uri "https://github.com/ipavl/clorum/blob/master/"
           :src-linenum-anchor-prefix "L"}
-  :profiles
-  {:dev {:dependencies [[ring-mock "0.1.5"]]}})
+  :profiles {:prod {:resource-paths ["config/prod"]}
+             :dev {:dependencies [[ring-mock "0.1.5"]]
+                   :resource-paths ["config/dev"]}})

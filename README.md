@@ -24,9 +24,13 @@ To start a web server for the application, run:
 
 The database structure can be found in `clorum-{database-server}.sql`, which can be easily imported into a database.
 
-## Database Servers
+## Configuration
 
-MySQL and PostgreSQL are currently supported out-of-the-box. PostgreSQL is the default and can be changed to MySQL by uncommenting the dependency in `project.clj` and setting `db` in `config.clj` to use the MySQL configuration found in that file instead of the PostgreSQL configuration.
+Clorum makes use of [yogthos/config](https://github.com/yogthos/config) to handle configuration. The default development profile can be found in `/config/dev/config.edn`. A blank `/config/prod/config.edn` file has been provided for production values, however other methods supported by the library, such as environment variables, can also be used.
+
+## Supported Databases
+
+MySQL and PostgreSQL are currently supported out-of-the-box. PostgreSQL is the default and can be changed to MySQL by editing the configuration files under the `config` directory.
 
 ## Documentation
 

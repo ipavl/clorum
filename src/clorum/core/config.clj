@@ -1,17 +1,10 @@
-(ns clorum.core.config)
+(ns clorum.core.config
+  (:require [config.core :refer [env]]))
 
-(def db {:subprotocol "postgresql"
-         :subname "//localhost:5432/clorum"
-         :user "postgres"
-         :password ""
-         :zeroDateTimeBehaviour "convertToNull"
-         :classname "org.postgresql.Driver"})
-
-;; To use MySQL instead, use the following instead of the above and uncomment the dependency in project.clj
-;(def db {:subprotocol "mysql"
-;         :subname "//localhost:3306/clorum"
-;         :user "root"
-;         :password ""
-;         :zeroDateTimeBehaviour "convertToNull"})
+(def db {:subprotocol (:clorum-db-subprotocol env)
+         :subname (str "//" (:clorum-db-host env) ":" (:clorum-db-port env) "/" (:clorum-db-name env))
+         :user (:clorum-db-password env)
+         :password (:clorum-db-password env)
+         :zeroDateTimeBehaviour "convertToNull"})
 
 (def recent-discussions-count 10)

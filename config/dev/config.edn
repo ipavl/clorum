@@ -1,0 +1,7 @@
+;; Database configuration
+{:clorum-db-subprotocol "postgresql", ;; postgresql or mysql
+ :clorum-db-host "localhost",
+ :clorum-db-port "5432",              ;; usually 5432 (postgres) or 3306 (mysql)
+ :clorum-db-name "clorum",
+ :clorum-db-user "postgres",
+ :clorum-db-password "postgres"}
