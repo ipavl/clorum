@@ -57,3 +57,10 @@ footer {
 .no-margin {
   margin: 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
