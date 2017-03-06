@@ -16,6 +16,7 @@
                  [lib-noir "0.9.9"]]
   :plugins [[lein-ring "0.8.13"]
             [codox "0.8.10"]]
+  :main "clorum.core.handler"
   :ring {:handler clorum.core.handler/app}
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

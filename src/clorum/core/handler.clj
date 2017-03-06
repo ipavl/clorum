@@ -3,6 +3,7 @@
             [compojure.core :refer :all]
             [compojure.route :as route]
             [compojure.handler :as handler]
+            [ring.adapter.jetty :as jetty]
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.basic-authentication :refer :all]
@@ -87,3 +88,6 @@
 
 (def app
   (handler/site app-routes))
+
+(defn -main [port]
+  (jetty/run-jetty app {:port (Integer. port)}))

@@ -1,1 +1,1 @@
-web: lein run -m clorum.core.handler
+web: lein run -m clorum.core.handler $PORT
