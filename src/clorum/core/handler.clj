@@ -7,6 +7,7 @@
             [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.basic-authentication :refer :all]
+            [config.core :refer [env]]
             [clorum.core.config :as config]
             [clorum.models.discussions :as discussions-model]
             [clorum.models.users :as users-model]
@@ -17,8 +18,8 @@
             [clorum.controllers.admin.users :as admin-users-controller]))
 
 (defn authenticated? [name pass]
-  (and (= name "admin")
-       (= pass "password")))
+  (and (= name (:clorum-admin-user env))
+       (= pass (:clorum-admin-password env))))
 
 (defn- wrap-guard
   "A guard to protect only /admin routes, otherwise something like the 404 page will be
