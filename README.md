@@ -43,6 +43,6 @@ Project documentation is generated with [Codox][] and can be found
 
 ## License
 
-Copyright © 2014-2016 ipavl
+Copyright © 2014-2017 ipavl
 
 Distributed under the Eclipse Public License, the same as Clojure.
