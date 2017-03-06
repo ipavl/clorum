@@ -3,7 +3,7 @@
 
 (def db {:subprotocol (:clorum-db-subprotocol env)
          :subname (str "//" (:clorum-db-host env) ":" (:clorum-db-port env) "/" (:clorum-db-name env))
-         :user (:clorum-db-password env)
+         :user (:clorum-db-user env)
          :password (:clorum-db-password env)
          :zeroDateTimeBehaviour "convertToNull"})
 
