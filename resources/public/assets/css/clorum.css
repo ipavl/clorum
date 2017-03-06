@@ -13,13 +13,12 @@ footer {
 }
 
 .post {
-  border: black 1px solid;
-  background-color: #af8;
+  border: solid 1px #aaa;
+  background-color: #fff;
 }
 
 .post-meta {
-  background-color: #8dd;
-  border-right: solid 1px black;
+  background-color: #ccc;
 }
 
 .post-author {
